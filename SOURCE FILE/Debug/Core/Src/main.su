@@ -2,5 +2,6 @@
 ../Core/Src/main.c:111:6:SystemClock_Config	72	static
 ../Core/Src/main.c:148:13:MX_TIM2_Init	32	static
 ../Core/Src/main.c:193:13:MX_GPIO_Init	32	static
-../Core/Src/main.c:235:7:HAL_TIM_PeriodElapsedCallback	16	static
-../Core/Src/main.c:282:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:281:7:update7SEG	16	static
+../Core/Src/main.c:239:7:HAL_TIM_PeriodElapsedCallback	24	static
+../Core/Src/main.c:333:6:Error_Handler	4	static,ignoring_inline_asm
