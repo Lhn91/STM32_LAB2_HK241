@@ -149,6 +149,7 @@ int main(void)
 	  		  }
 	  	}
 
+	  //TODO
 	  if(timer1_flag == 1){
 			  second ++;
 			  if ( second >= 60) {
@@ -168,6 +169,8 @@ int main(void)
 		   if(index_led == 4){
 			   index_led = 0;
 		   }
+		   HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		   HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
 		   setTimer1(100);
 		  }
   }
