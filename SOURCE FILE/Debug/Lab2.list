@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0000404c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00007fbd  00000000  00000000  00004075  2**0
+ 12 .debug_info   00007ffc  00000000  00000000  00004075  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001923  00000000  00000000  0000c032  2**0
+ 13 .debug_abbrev 00001923  00000000  00000000  0000c071  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000009a8  00000000  00000000  0000d958  2**3
+ 14 .debug_aranges 000009a8  00000000  00000000  0000d998  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000765  00000000  00000000  0000e300  2**0
+ 15 .debug_rnglists 00000765  00000000  00000000  0000e340  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001671a  00000000  00000000  0000ea65  2**0
+ 16 .debug_macro  000168af  00000000  00000000  0000eaa5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000a982  00000000  00000000  0002517f  2**0
+ 17 .debug_line   0000b00a  00000000  00000000  00025354  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000823ad  00000000  00000000  0002fb01  2**0
+ 18 .debug_str    000823ad  00000000  00000000  0003035e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000b1eae  2**0
+ 19 .comment      00000043  00000000  00000000  000b270b  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000026e0  00000000  00000000  000b1ef4  2**2
+ 20 .debug_frame  000026e0  00000000  00000000  000b2750  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000058  00000000  00000000  000b45d4  2**0
+ 21 .debug_line_str 00000058  00000000  00000000  000b4e30  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1521,7 +1521,7 @@ void timerRun(){
  8000adc:	b480      	push	{r7}
  8000ade:	b083      	sub	sp, #12
  8000ae0:	af00      	add	r7, sp, #0
-	for(int i = 0; i<=10; i++){ //TOI UU HOA ----> O(1)
+	for(int i = 0; i<10; i++){ //TOI UU HOA ----> O(1)
  8000ae2:	2300      	movs	r3, #0
  8000ae4:	607b      	str	r3, [r7, #4]
  8000ae6:	e01c      	b.n	8000b22 <timerRun+0x46>
@@ -1550,12 +1550,12 @@ void timerRun(){
  8000b14:	687b      	ldr	r3, [r7, #4]
  8000b16:	2101      	movs	r1, #1
  8000b18:	f842 1023 	str.w	r1, [r2, r3, lsl #2]
-	for(int i = 0; i<=10; i++){ //TOI UU HOA ----> O(1)
+	for(int i = 0; i<10; i++){ //TOI UU HOA ----> O(1)
  8000b1c:	687b      	ldr	r3, [r7, #4]
  8000b1e:	3301      	adds	r3, #1
  8000b20:	607b      	str	r3, [r7, #4]
  8000b22:	687b      	ldr	r3, [r7, #4]
- 8000b24:	2b0a      	cmp	r3, #10
+ 8000b24:	2b09      	cmp	r3, #9
  8000b26:	dddf      	ble.n	8000ae8 <timerRun+0xc>
 		}
 	}

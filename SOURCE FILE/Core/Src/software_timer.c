@@ -15,7 +15,7 @@ void setTimer1(int duration, int index){
 }
 
 void timerRun(){
-	for(int i = 0; i<=10; i++){ //TOI UU HOA ----> O(1)
+	for(int i = 0; i<10; i++){ //TOI UU HOA ----> O(1)
 	if(timer1_counter[i] > 0){
 		timer1_counter[i]--;
 		if(timer1_counter[i] == 0){
