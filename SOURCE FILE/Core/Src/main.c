@@ -100,7 +100,7 @@ int main(void)
   int hour = 15, minute = 8, second = 50;
   int index_led = 0;
   int led_buffer [4] = {hour/10, hour%10, minute/10, minute%10};
-  setTimer1(1000, 0);
+  setTimer1(1000,0);
   while (1)
   {
 	  void updateClockBuffer(){
@@ -182,7 +182,7 @@ int main(void)
 		   updateLEDMatrix(5);
 		   updateLEDMatrix(6);
 		   updateLEDMatrix(7);
-		   setTimer1(1000, 0);
+		   setTimer1(1000,0);
 		  }
 
   }

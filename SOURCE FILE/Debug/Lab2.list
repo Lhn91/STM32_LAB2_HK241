@@ -296,7 +296,7 @@ unsigned int chuK[8]={0xFF00,0x7E00,0x3C00,0x9900,0xC300,0x0000,0x0000,0xFF00};
 080002d8 <updateClockBuffer.0>:
   int index_led = 0;
   int led_buffer [4] = {hour/10, hour%10, minute/10, minute%10};
-  setTimer1(1000, 0);
+  setTimer1(1000,0);
   while (1)
   {
 	  void updateClockBuffer(){
@@ -424,7 +424,7 @@ int main(void)
  80003c8:	005b      	lsls	r3, r3, #1
  80003ca:	1aca      	subs	r2, r1, r3
  80003cc:	617a      	str	r2, [r7, #20]
-  setTimer1(1000, 0);
+  setTimer1(1000,0);
  80003ce:	2100      	movs	r1, #0
  80003d0:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  80003d4:	f000 fb62 	bl	8000a9c <setTimer1>
@@ -529,7 +529,7 @@ int main(void)
 		   updateLEDMatrix(7);
  800046c:	2007      	movs	r0, #7
  800046e:	f7ff fe6d 	bl	800014c <updateLEDMatrix>
-		   setTimer1(1000, 0);
+		   setTimer1(1000,0);
  8000472:	2100      	movs	r1, #0
  8000474:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  8000478:	f000 fb10 	bl	8000a9c <setTimer1>
@@ -1521,7 +1521,7 @@ void timerRun(){
  8000adc:	b480      	push	{r7}
  8000ade:	b083      	sub	sp, #12
  8000ae0:	af00      	add	r7, sp, #0
-	for(int i =0; i<=10; i++){ //TOI UU HOA ----> O(1)
+	for(int i = 0; i<=10; i++){ //TOI UU HOA ----> O(1)
  8000ae2:	2300      	movs	r3, #0
  8000ae4:	607b      	str	r3, [r7, #4]
  8000ae6:	e01c      	b.n	8000b22 <timerRun+0x46>
@@ -1550,7 +1550,7 @@ void timerRun(){
  8000b14:	687b      	ldr	r3, [r7, #4]
  8000b16:	2101      	movs	r1, #1
  8000b18:	f842 1023 	str.w	r1, [r2, r3, lsl #2]
-	for(int i =0; i<=10; i++){ //TOI UU HOA ----> O(1)
+	for(int i = 0; i<=10; i++){ //TOI UU HOA ----> O(1)
  8000b1c:	687b      	ldr	r3, [r7, #4]
  8000b1e:	3301      	adds	r3, #1
  8000b20:	607b      	str	r3, [r7, #4]
