@@ -1,3 +1,4 @@
+../Core/Src/main.c:111:9:updateClockBuffer	16	static
 ../Core/Src/main.c:70:5:main	64	static
 ../Core/Src/main.c:163:6:SystemClock_Config	72	static
 ../Core/Src/main.c:200:13:MX_TIM2_Init	32	static

@@ -116,14 +116,14 @@ int main(void)
 	  }
 for(int i = 0; i<8; i++){
 	 updateLEDMatrix(i, matrix_buffer_col, matrix_buffer_row);
-	 HAL_Delay(10);
+	 HAL_Delay(30);
 	 resetRow();
 	 resetCol();
 
 }
 	  //updateLEDMatrix(3, matrix_buffer_col, matrix_buffer_row);
 	  //TODO
-	  /*if(timer_flag[0] == 1){
+	  if(timer_flag[0] == 1){
 			  second ++;
 			  if ( second >= 60) {
 				  second = 0;
@@ -146,7 +146,7 @@ for(int i = 0; i<8; i++){
 		   HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
 
 		   setTimer(1000,0);
-		  }*/
+		  }
 
   }
     /* USER CODE END WHILE */
