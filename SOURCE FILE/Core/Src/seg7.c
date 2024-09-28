@@ -5,6 +5,47 @@
  *      Author: 84859
  */
 #include "seg7.h"
+
+ void update7SEG ( int index, int led_buffer[]){
+	  		 switch ( index ){
+	  		 case 0:
+	  		 // Display the first 7 SEG with led_buffer [0]
+	  			 display7SEG(led_buffer[0]);
+	  			 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin,RESET);
+	  			 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin,SET);
+	  			 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin,SET);
+	  			 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin,SET);
+
+	  		 break ;
+	  		 case 1:
+	  			 display7SEG(led_buffer[1]);
+	  			 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin,SET);
+	  			 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin,RESET);
+	  			 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin,SET);
+	  			 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin,SET);
+	  		  // Display the second 7 SEG with led_buffer [1]
+	  		  break ;
+	  		  case 2:
+	  			  display7SEG(led_buffer[2]);
+	  				 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin,SET);
+	  				 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin,SET);
+	  				 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin,RESET);
+	  				 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin,SET);
+	  		  // Display the third 7 SEG with led_buffer [2]
+	  		  break ;
+	  		  case 3:
+	  			  display7SEG(led_buffer[3]);
+	  				 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin,SET);
+	  				 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin,SET);
+	  				 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin,SET);
+	  				 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin,RESET);
+	  		  // Display the forth 7 SEG with led_buffer [3]
+	  		  break ;
+	  		  default :
+	  		  break ;
+	  		  }
+	  	}
+
 void display7SEG(int num){
 	switch(num){
 		 case 0:

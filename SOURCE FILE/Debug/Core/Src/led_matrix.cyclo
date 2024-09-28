@@ -1,1 +1,6 @@
-../Core/Src/led_matrix.c:13:7:updateLEDMatrix	9
+../Core/Src/led_matrix.c:14:10:convert_to_binary_array	3
+../Core/Src/led_matrix.c:27:6:resetRow	1
+../Core/Src/led_matrix.c:38:6:getRow	11
+../Core/Src/led_matrix.c:63:6:resetCol	1
+../Core/Src/led_matrix.c:74:6:getCol	11
+../Core/Src/led_matrix.c:100:7:updateLEDMatrix	3

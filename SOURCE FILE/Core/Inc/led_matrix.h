@@ -9,5 +9,8 @@
 #define INC_LED_MATRIX_H_
 
 #include "main.h"
-void updateLEDMatrix (int index );
+#include <stdlib.h>
+void updateLEDMatrix (int index,uint8_t matrix_buffer_col[], uint8_t matrix_buffer_row[]);
+void resetRow();
+void resetCol();
 #endif /* INC_LED_MATRIX_H_ */

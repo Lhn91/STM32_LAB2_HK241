@@ -10,6 +10,6 @@
 
 #include "main.h"
 void display7SEG(int num);
-void update7SEG(int index);
+void update7SEG(int index, int led_buffer[]);
 
 #endif /* INC_SEG7_H_ */

@@ -6,20 +6,22 @@
  */
 #include "software_timer.h"
 
-int timer1_counter[10];
-int timer1_flag[10];
+int timer_counter[10];
+int timer_flag[10];
 
-void setTimer1(int duration, int index){
-	timer1_counter[index] = duration/10;
-	timer1_flag[index] = 0;
+void setTimer(int duration, int index){
+	timer_counter[index] = duration/10;
+	timer_flag[index] = 0;
 }
 
+
+
 void timerRun(){
-	for(int i = 0; i<10; i++){ //TOI UU HOA ----> O(1)
-	if(timer1_counter[i] > 0){
-		timer1_counter[i]--;
-		if(timer1_counter[i] == 0){
-			timer1_flag[i] = 1;
+	for(int i = 0; i < 10; i++){ //TOI UU HOA ----> O(1)
+	if(timer_counter[i] > 0){
+		timer_counter[i]--;
+		if(timer_counter[i] == 0){
+			timer_flag[i] = 1;
 		}
 	}
 }

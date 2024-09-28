@@ -21,9 +21,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdlib.h>
 #include "seg7.h"
 #include "software_timer.h"
 #include "led_matrix.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,10 +99,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int hour = 15, minute = 8, second = 50;
   int index_led = 0;
-  int led_buffer [4] = {hour/10, hour%10, minute/10, minute%10};
-  setTimer1(1000,0);
+  int hour = 15, minute = 8, second = 50;
+  int led_buffer[4]= {hour/10, hour%10, minute/10, minute%10};
+  uint8_t matrix_buffer_col[8] = {0xFE, 0xFD, 0xFB, 0xF7, 0xEF, 0xDF, 0xBF, 0x7F};
+  uint8_t matrix_buffer_row[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x7E, 0x66, 0x66};
+  setTimer(1000,0);
+  setTimer(4000,1);
   while (1)
   {
 	  void updateClockBuffer(){
@@ -109,49 +114,16 @@ int main(void)
 		  led_buffer[2] = minute/10;
 		  led_buffer[3] = minute%10;
 	  }
+for(int i = 0; i<8; i++){
+	 updateLEDMatrix(i, matrix_buffer_col, matrix_buffer_row);
+	 HAL_Delay(10);
+	 resetRow();
+	 resetCol();
 
-	  void update7SEG ( int index ){
-	  		 switch ( index ){
-	  		 case 0:
-	  		 // Display the first 7 SEG with led_buffer [0]
-	  			 display7SEG(led_buffer[0]);
-	  			 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin,RESET);
-	  			 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin,SET);
-	  			 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin,SET);
-	  			 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin,SET);
-
-	  		 break ;
-	  		 case 1:
-	  			 display7SEG(led_buffer[1]);
-	  			 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin,SET);
-	  			 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin,RESET);
-	  			 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin,SET);
-	  			 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin,SET);
-	  		  // Display the second 7 SEG with led_buffer [1]
-	  		  break ;
-	  		  case 2:
-	  			  display7SEG(led_buffer[2]);
-	  				 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin,SET);
-	  				 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin,SET);
-	  				 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin,RESET);
-	  				 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin,SET);
-	  		  // Display the third 7 SEG with led_buffer [2]
-	  		  break ;
-	  		  case 3:
-	  			  display7SEG(led_buffer[3]);
-	  				 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin,SET);
-	  				 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin,SET);
-	  				 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin,SET);
-	  				 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin,RESET);
-	  		  // Display the forth 7 SEG with led_buffer [3]
-	  		  break ;
-	  		  default :
-	  		  break ;
-	  		  }
-	  	}
-
+}
+	  //updateLEDMatrix(3, matrix_buffer_col, matrix_buffer_row);
 	  //TODO
-	  if(timer1_flag[0] == 1){
+	  /*if(timer_flag[0] == 1){
 			  second ++;
 			  if ( second >= 60) {
 				  second = 0;
@@ -165,7 +137,7 @@ int main(void)
 				  hour = 0;
 			  }
 		   updateClockBuffer();
-		   update7SEG(index_led);
+		   update7SEG(index_led,led_buffer);
 		   index_led++;
 		   if(index_led == 4){
 			   index_led = 0;
@@ -173,17 +145,8 @@ int main(void)
 		   HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		   HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
 
-
-		   updateLEDMatrix(0);
-		   updateLEDMatrix(1);
-		   updateLEDMatrix(2);
-		   updateLEDMatrix(3);
-		   updateLEDMatrix(4);
-		   updateLEDMatrix(5);
-		   updateLEDMatrix(6);
-		   updateLEDMatrix(7);
-		   setTimer1(1000,0);
-		  }
+		   setTimer(1000,0);
+		  }*/
 
   }
     /* USER CODE END WHILE */
