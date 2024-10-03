@@ -25,7 +25,7 @@
 #include "seg7.h"
 #include "software_timer.h"
 #include "led_matrix.h"
-
+#include "led_matrix2.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -106,6 +106,7 @@ int main(void)
   uint8_t matrix_buffer_row[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x7E, 0x66, 0x66};
   setTimer(1000,0);
   setTimer(4000,1);
+  setTimer(250,2);
   while (1)
   {
 	  void updateClockBuffer(){
@@ -114,15 +115,30 @@ int main(void)
 		  led_buffer[2] = minute/10;
 		  led_buffer[3] = minute%10;
 	  }
-for(int i = 0; i<8; i++){
-	 updateLEDMatrix(i, matrix_buffer_col, matrix_buffer_row);
-	 HAL_Delay(30);
-	 resetRow();
-	 resetCol();
 
-}
+	  void run_matrix(){
+			  for(int j = 0; j<1000; j++){
+		  	 for(int i = 0; i<8; i++){
+		  	 	 updateLEDMatrix(i, matrix_buffer_col, matrix_buffer_row);
+		  	 	 HAL_Delay(30);
+		  	 	 resetRow();
+		  	 	 resetCol();
+
+		  	 }
+		  	 }
+		  }
+	  //run_matrix();
+
 	  //updateLEDMatrix(3, matrix_buffer_col, matrix_buffer_row);
 	  //TODO
+	  if(timer_flag[2]==1){
+		  update7SEG(index_led, led_buffer);
+		  		   index_led++;
+		  		   if(index_led == 4){
+		  			   index_led = 0;
+		  		   }
+		  		   setTimer(250,2);
+	  }
 	  if(timer_flag[0] == 1){
 			  second ++;
 			  if ( second >= 60) {
@@ -137,11 +153,6 @@ for(int i = 0; i<8; i++){
 				  hour = 0;
 			  }
 		   updateClockBuffer();
-		   update7SEG(index_led,led_buffer);
-		   index_led++;
-		   if(index_led == 4){
-			   index_led = 0;
-		   }
 		   HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		   HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
 
@@ -152,7 +163,6 @@ for(int i = 0; i<8; i++){
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
   /* USER CODE END 3 */
 }
 
@@ -298,6 +308,7 @@ static void MX_GPIO_Init(void)
  void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
 	 timerRun();
+
 
 }
 /* USER CODE END 4 */
