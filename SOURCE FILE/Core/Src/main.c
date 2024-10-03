@@ -99,6 +99,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  //int count = 0;
   int index_led = 0;
   int hour = 15, minute = 8, second = 50;
   int led_buffer[4]= {hour/10, hour%10, minute/10, minute%10};
@@ -116,18 +117,29 @@ int main(void)
 		  led_buffer[3] = minute%10;
 	  }
 
-	  void run_matrix(){
-			  for(int j = 0; j<1000; j++){
-		  	 for(int i = 0; i<8; i++){
-		  	 	 updateLEDMatrix(i, matrix_buffer_col, matrix_buffer_row);
-		  	 	 HAL_Delay(30);
-		  	 	 resetRow();
-		  	 	 resetCol();
+/*void run_matrix_left(){
+	for(int j = 0; j<1000; j++){
+			  for(int i = 0; i<8; i++){
+				 resetCol();
+				 resetRow();
+				updateLEDMatrix_left(i, matrix_buffer_col, matrix_buffer_row, count);
+				 HAL_Delay(1);
+			   }
 
-		  	 }
+	}
+}
+	  run_matrix_left();
+++count;*/
+
+	  void run_matrix(){
+		  	 for(int i = 0; i<8; i++){
+		  		 resetCol();
+		  		 resetRow();
+		  	 	 updateLEDMatrix(i, matrix_buffer_col, matrix_buffer_row);
+		  	 	 HAL_Delay(1);
 		  	 }
 		  }
-	  //run_matrix();
+	 run_matrix();
 
 	  //updateLEDMatrix(3, matrix_buffer_col, matrix_buffer_row);
 	  //TODO

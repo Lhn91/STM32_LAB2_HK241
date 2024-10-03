@@ -1,6 +1,7 @@
-../Core/Src/led_matrix.c:14:10:convert_to_binary_array	24	static
-../Core/Src/led_matrix.c:27:6:resetRow	8	static
-../Core/Src/led_matrix.c:38:6:getRow	24	static
-../Core/Src/led_matrix.c:63:6:resetCol	8	static
-../Core/Src/led_matrix.c:74:6:getCol	24	static
-../Core/Src/led_matrix.c:100:7:updateLEDMatrix	32	static
+../Core/Src/led_matrix.c:13:10:convert_to_binary_array	24	static
+../Core/Src/led_matrix.c:26:6:resetRow	8	static
+../Core/Src/led_matrix.c:37:6:getRow	24	static
+../Core/Src/led_matrix.c:62:6:resetCol	8	static
+../Core/Src/led_matrix.c:73:6:getCol	24	static
+../Core/Src/led_matrix.c:98:7:updateLEDMatrix	32	static
+../Core/Src/led_matrix.c:111:7:updateLEDMatrix_left	32	static

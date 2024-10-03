@@ -10,7 +10,6 @@
 const int MAX_LED_MATRIX = 8;
 int index_led_matrix = 0;
 
-
 uint8_t* convert_to_binary_array(uint8_t value) {
     uint8_t* binary_array = (uint8_t*)malloc(8 * sizeof(uint8_t));
 
@@ -93,12 +92,24 @@ void getCol(uint8_t* binary_array) {
 	           	                   	   break ;
 	          }
 	        }
-
 	 }
 }
 
  void updateLEDMatrix (int index, uint8_t matrix_buffer_col[], uint8_t matrix_buffer_row[]){
 	 uint8_t *binary_array_row = convert_to_binary_array(matrix_buffer_row[index]);
+	 uint8_t *binary_array_col = convert_to_binary_array(matrix_buffer_col[index]);
+	   if (binary_array_row == NULL || binary_array_col == NULL) {
+	        return;
+	    }
+
+	 getRow(binary_array_row);
+	 getCol(binary_array_col);
+	 free(binary_array_row);
+	 free(binary_array_col);
+}
+
+ void updateLEDMatrix_left(int index, uint8_t matrix_buffer_col[], uint8_t matrix_buffer_row[], int move){
+	 uint8_t *binary_array_row = convert_to_binary_array(matrix_buffer_row[index] >> move);
 	 uint8_t *binary_array_col = convert_to_binary_array(matrix_buffer_col[index]);
 	   if (binary_array_row == NULL || binary_array_col == NULL) {
 	        return;
